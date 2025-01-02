@@ -1,4 +1,4 @@
-# color [![](https://github.com/fatih/color/workflows/build/badge.svg)](https://github.com/fatih/color/actions) [![PkgGoDev](https://pkg.go.dev/badge/github.com/fatih/color)](https://pkg.go.dev/github.com/fatih/color)
+# color [![](https://github.com/raulaguila/ansi-color/workflows/build/badge.svg)](https://github.com/raulaguila/ansi-color/actions) [![PkgGoDev](https://pkg.go.dev/badge/github.com/raulaguila/ansi-color)](https://pkg.go.dev/github.com/raulaguila/ansi-color)
 
 Color lets you use colorized outputs in terms of [ANSI Escape
 Codes](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors) in Go (Golang). It
@@ -10,7 +10,7 @@ suits you.
 ## Install
 
 ```
-go get github.com/fatih/color
+go get github.com/raulaguila/ansi-color
 ```
 
 ## Examples
@@ -186,4 +186,4 @@ To output color in GitHub Actions (or other CI systems that support ANSI colors)
 
 ## License
 
-The MIT License (MIT) - see [`LICENSE.md`](https://github.com/fatih/color/blob/master/LICENSE.md) for more details
+The MIT License (MIT) - see [`LICENSE.md`](https://github.com/raulaguila/ansi-color/blob/master/LICENSE.md) for more details

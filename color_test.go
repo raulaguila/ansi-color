@@ -6,8 +6,6 @@ import (
 	"io"
 	"os"
 	"testing"
-
-	"github.com/mattn/go-colorable"
 )
 
 // Testing colors is kinda different. First we test for given colors and their
@@ -237,7 +235,7 @@ func Test_noColorIsSet(t *testing.T) {
 
 func TestColorVisual(t *testing.T) {
 	// First Visual Test
-	Output = colorable.NewColorableStdout()
+	Output = os.Stdout
 
 	New(FgRed).Printf("red\t")
 	New(BgRed).Print("         ")

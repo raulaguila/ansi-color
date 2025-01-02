@@ -8,9 +8,17 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/mattn/go-colorable"
-	"github.com/mattn/go-isatty"
+	"golang.org/x/sys/unix"
 )
+
+func IsTerminal(fd uintptr) bool {
+	_, err := unix.IoctlGetTermios(int(fd), unix.TIOCGETA)
+	return err == nil
+}
+
+func IsCygwinTerminal(fd uintptr) bool {
+	return false
+}
 
 var (
 	// NoColor defines if the output is colorized or not. It's dynamically set to
@@ -19,15 +27,14 @@ var (
 	// set (regardless of its value). This is a global option and affects all
 	// colors. For more control over each color block use the methods
 	// DisableColor() individually.
-	NoColor = noColorIsSet() || os.Getenv("TERM") == "dumb" ||
-		(!isatty.IsTerminal(os.Stdout.Fd()) && !isatty.IsCygwinTerminal(os.Stdout.Fd()))
+	NoColor = noColorIsSet() || os.Getenv("TERM") == "dumb" || (!IsTerminal(os.Stdout.Fd()) && !IsCygwinTerminal(os.Stdout.Fd()))
 
 	// Output defines the standard output of the print functions. By default,
 	// os.Stdout is used.
-	Output = colorable.NewColorableStdout()
+	Output = os.Stdout
 
 	// Error defines a color supporting writer for os.Stderr.
-	Error = colorable.NewColorableStderr()
+	Error = os.Stderr
 
 	// colorsCache is used to reduce the count of created Color objects and
 	// allows to reuse already created objects with required Attribute.
